@@ -10,7 +10,7 @@ let initialColors;
 
 // color generator
 function generateHex() {
-  const letters = "#0123456789ABCDEF";
+  const letters = "0123456789ABCDEF";
   let hash = "#";
   for (let i = 0; i < 6; i++) {
     hash += letters[Math.floor(Math.random() * 16)];
@@ -18,4 +18,15 @@ function generateHex() {
   return hash;
 }
 
-function randomColors() {}
+function randomColors() {
+  colorDivs.forEach((div, index) => {
+    const hexText = div.children[0];
+    const randomColor = generateHex();
+
+    // add the random color to the background
+    div.style.backgroundColor = randomColor;
+    hexText.innerText = randomColor;
+  });
+}
+
+randomColors();
