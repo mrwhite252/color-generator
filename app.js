@@ -9,14 +9,24 @@ let initialColors;
 // functions
 
 // color generator
+
+// generate hex color by use chroma js:
+
 function generateHex() {
-  const letters = "0123456789ABCDEF";
-  let hash = "#";
-  for (let i = 0; i < 6; i++) {
-    hash += letters[Math.floor(Math.random() * 16)];
-  }
-  return hash;
+  const hexColor = chroma.random();
+
+  return hexColor;
 }
+
+// generate hex color by use native js way:
+// function generateHex() {
+//   const letters = "0123456789ABCDEF";
+//   let hash = "#";
+//   for (let i = 0; i < 6; i++) {
+//     hash += letters[Math.floor(Math.random() * 16)];
+//   }
+//   return hash;
+// }
 
 function randomColors() {
   colorDivs.forEach((div, index) => {
