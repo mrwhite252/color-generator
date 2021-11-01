@@ -1,7 +1,14 @@
 // global selections and variables
 
+const colorDivs = document.querySelectorAll(".color");
+const generateBtn = document.querySelectorAll(".generate");
+const sliders = document.querySelectorAll('input[type="range"]');
+const currentHexes = document.querySelectorAll(".color h2");
+let initialColors;
+
 // functions
 
+// color generator
 function generateHex() {
   const letters = "#0123456789ABCDEF";
   let hash = "#";
@@ -11,5 +18,4 @@ function generateHex() {
   return hash;
 }
 
-let randomHex = generateHex();
-console.log(randomHex);
+function randomColors() {}
