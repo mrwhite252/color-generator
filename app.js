@@ -49,6 +49,12 @@ closeAdjustments.forEach((button, index) => {
   });
 });
 
+lockButton.forEach((button, index) => {
+  button.addEventListener("click", (e) => {
+    lockButtonToggle(e, index);
+  });
+});
+
 // functions
 
 // color generator
@@ -228,6 +234,15 @@ function openAdjustmentPanel(index) {
 }
 function closeAdjustmentPanel(index) {
   sliderContainers[index].classList.remove("active");
+}
+
+function lockButtonToggle(e, index) {
+  colorDivs[index].classList.toggle("locked");
+  if (colorDivs[index].classList.contains("locked")) {
+    e.target.innerHTML = `<i class="fas fa-lock"></i>`;
+  } else {
+    e.target.innerHTML = `<i class="fas fa-lock-open"></i>`;
+  }
 }
 
 randomColors();
