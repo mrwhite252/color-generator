@@ -4,6 +4,7 @@ const colorDivs = document.querySelectorAll(".color");
 const generateBtn = document.querySelectorAll(".generate");
 const sliders = document.querySelectorAll('input[type="range"]');
 const currentHexes = document.querySelectorAll(".color h2");
+const popup = document.querySelector(".copy-container");
 let initialColors;
 
 // event listners
@@ -16,6 +17,18 @@ colorDivs.forEach((div, index) => {
   div.addEventListener("change", () => {
     updateTextUI(index);
   });
+});
+
+currentHexes.forEach((hex) => {
+  hex.addEventListener("click", () => {
+    copyToClipboard(hex);
+  });
+});
+
+popup.addEventListener("transitionend", () => {
+  const popupBox = popup.children[0];
+  popup.classList.remove("active");
+  popupBox.classList.remove("active");
 });
 
 // functions
@@ -132,7 +145,6 @@ function hslControls(e) {
 function updateTextUI(index) {
   const activeDiv = colorDivs[index];
   const color = chroma(activeDiv.style.backgroundColor);
-  console.log(color.hex());
   const textHex = activeDiv.querySelector("h2");
   const icons = activeDiv.querySelectorAll(".controls button");
   textHex.innerText = color.hex();
@@ -166,6 +178,25 @@ function resetInputs() {
       slider.value = Math.floor(saturationValue * 100) / 100;
     }
   });
+}
+
+function copyToClipboard(hex) {
+  // this is the obsolete method to copy content to clipboard:
+
+  //   const el = document.createElement("textarea");
+  //   el.value = hex.innerText;
+  //   document.body.appendChild(el);
+  //   el.select();
+  //   document.execCommand("copy");
+  //   document.body.removeChild(el);
+
+  navigator.clipboard.writeText(hex.innerText);
+
+  //   pop up animation
+
+  const popupBox = popup.children[0];
+  popupBox.classList.add("active");
+  popup.classList.add("active");
 }
 
 randomColors();
