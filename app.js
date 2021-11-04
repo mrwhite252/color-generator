@@ -1,7 +1,7 @@
 // global selections and variables
 
 const colorDivs = document.querySelectorAll(".color");
-const generateBtn = document.querySelectorAll(".generate");
+const generateBtn = document.querySelector(".generate");
 const sliders = document.querySelectorAll('input[type="range"]');
 const currentHexes = document.querySelectorAll(".color h2");
 const popup = document.querySelector(".copy-container");
@@ -12,6 +12,8 @@ const sliderContainers = document.querySelectorAll(".sliders");
 let initialColors;
 
 // event listners
+
+generateBtn.addEventListener("click", randomColors);
 
 sliders.forEach((slider) => {
   slider.addEventListener("input", hslControls);
