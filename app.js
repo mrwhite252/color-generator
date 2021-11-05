@@ -11,6 +11,10 @@ const closeAdjustments = document.querySelectorAll(".close-adjustment");
 const sliderContainers = document.querySelectorAll(".sliders");
 let initialColors;
 
+// for local storage
+
+let savedPalettes = [];
+
 // event listners
 
 generateBtn.addEventListener("click", randomColors);
@@ -250,6 +254,29 @@ function lockButtonToggle(e, index) {
   } else {
     e.target.innerHTML = `<i class="fas fa-lock-open"></i>`;
   }
+}
+
+// implement save to palette and local storage
+
+const saveButton = document.querySelector(".save");
+const submitSave = document.querySelector(".submit-save");
+const closeSave = document.querySelector(".close-save");
+const saveContainer = document.querySelector(".save-container");
+const saveInput = document.querySelector(".save-container input");
+
+saveButton.addEventListener("click", openPalette);
+closeSave.addEventListener("click", closePalette);
+
+function openPalette(e) {
+  const popup = saveContainer.children[0];
+  saveContainer.classList.add("active");
+  popup.classList.add("active");
+}
+
+function closePalette(e) {
+  const popup = saveContainer.children[0];
+  saveContainer.classList.remove("active");
+  popup.classList.remove("active");
 }
 
 randomColors();
